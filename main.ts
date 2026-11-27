@@ -17,6 +17,16 @@ You have spent the day giving every word its due, reading each one as if it matt
 This is only a note to say it was seen. The cup beside you has gone cool, and no one has minded. The words will wait. The next sentence isn't going anywhere.
 `;
 
+const length = [...text].length;
+if (text.trim().length === 0) {
+  console.error('refusing to write: the thank-you text is empty or only whitespace');
+  process.exit(1);
+}
+if (length < 1 || length > 1000) {
+  console.error('refusing to write: the text is ' + length + ' code points, outside the 1 to 1000 range');
+  process.exit(1);
+}
+
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 mkdirSync(outDir, { recursive: true });
 
